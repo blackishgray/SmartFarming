@@ -3,26 +3,24 @@ import os
 import dash
 import  url_override
 import fertilizer_pred as fp 
-
+from markupsafe import Markup
+from dash_demo import *
 # from fertilizer import pred_fert_reco 
 
 server = Flask(__name__, static_url_path='/static')
-
-# dash_app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/')
-
-# app.layout = html.Div(id="dash-cointainer")
-
+ 
 @server.route("/")
 def index():
 	return render_template("index.html")
 
 @server.route("/dashboard")
 def dashboard():
-	return render_template("dashboard.html")
+    graph = district_wise_prod()
+	return render_template("dashboard.html", graph=graph)
 
 @server.route("/crop")
 def crop_pred():
-    return render_template('crop.html')
+    return render_template('crop_pred.html')
 
 @server.route("/fertilizer")
 def fertilizer():
@@ -32,15 +30,18 @@ def fertilizer():
 def fertilizer_process():
     
     if request.method == "POST":
-        Crop = str(request.form['crop-value'])
-        N = int(request.form["n-value"]) #10
-        P = int(request.form['p-value']) #20
-        K = int(request.form['k-value']) #40
+        Crop = str(request.form['crop-value']).lower()
+        N = int(request.form["n-value"])
+        P = int(request.form['p-value']) 
+        K = int(request.form['k-value']) 
         pH = float(request.form['pH-value'])
-        # obj1 = pred_fert_reco()
-        # dict_of_values = obj1.compute_values()
-        rec = fp.
-    return render_template("fertilizer_result.html", context=context)
+ 
+        values = [Crop, N, P, K, pH]
+
+        rec = fp.compute_values(values)
+        dict2 = {'nrec':Markup(rec[0]), 'prec':Markup(rec[1]), 'krec':Markup(rec[2]), 'pHrec':Markup(rec[3])}
+
+    return render_template("fertilizer_result.html", context=dict2)
 
 @server.context_processor
 def override_url_for():
@@ -56,5 +57,5 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
-if __name__ == "__main__":
-	server.run(debug=True)
+# if __name__ == "__main__":
+# 	server.run(debug=True)

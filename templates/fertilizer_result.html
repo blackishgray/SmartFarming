@@ -6,7 +6,19 @@
 </head>
 <body>
 	{% block body%}
-	<h1>{{context}}</h1>	 
+	
+	<div class="fert-result-div-main">
+
+		<p>{{ context['nrec'] }}</p>
+
+		<p>{{ context['prec'] }}</p>
+
+		<p>{{ context['krec'] }}</p>
+
+		<p>{{ context['pHrec'] }}</p>
+
+	</div>
+	
 	{% endblock %}
 </body>
 </html>

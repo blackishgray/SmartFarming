@@ -7,26 +7,21 @@ import dash_html_components as html
 import dash_table
 import json
 
-from flask import Flask
-
 from dash.dependencies import Input, Output
 from flask import send_from_directory
 
 import plotly.express as px
 
-from routes import *
 
 
 df = pd.read_csv("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//apy_clean.csv")
 # df.drop('Unnamed: 0', axis=1, inplace=True)
 
 #initalizing the dash 
-# server = Flask(__name__)
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, requests_pathname_prefix='/dashboard/')
 
-# app.css.config.serve_locally = True
-# app.scripts.config.serve_locally = True
-# 
+app.css.config.serve_locally = True
+app.scripts.config.serve_locally = True
 
 #Designing the app layout 
 app.layout = html.Div(className="main-div",children=[
@@ -221,12 +216,12 @@ def map_india(crop):
 
 	return fig
 
-# path fot the static/assets file 
+# # path fot the static/assets file 
 # @app.server.route('/assets/<path:path>')
 # def static_file(path):
 #     static_folder = os.path.join(os.getcwd(), 'assets')
 #     return send_from_directory(static_folder, path)
 
-if __name__ == "__main__":
-	app.run_server()
+# if __name__ == "__main__":
+# 	app.run_server(debug=True)
 
