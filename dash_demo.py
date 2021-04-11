@@ -20,6 +20,7 @@ df = pd.read_csv("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning
 #initalizing the dash 
 app = dash.Dash(__name__, requests_pathname_prefix='/dashboard/')
 
+app.config.suppress_callback_exceptions = True
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
 
@@ -62,7 +63,7 @@ app.layout = html.Div(className="main-div",children=[
 	html.Br(),
 
 	html.Div(className="div4", children=[
-		html.Div(className="div5 row",
+		html.Div(className="row",
 		children=[
 		html.Label("Enter the State Name:"),
 		dcc.Input(type="text", id="state_name_for_district", placeholder="Maharashtra"),
@@ -117,7 +118,7 @@ def district_wise_prod(state_name):
 		state_df = df[df["State_Name"]==state_name]
 		production_df = state_df.groupby("District_Name", axis=0).mean().sort_values(by="Production", ascending=False).reset_index()
 
-		bar_graph = px.bar(data_frame=production_df, x="District_Name", y="Production", color="District_Name", title=f"Total Production for {state_name}")
+		bar_graph = px.bar(data_frame=production_df, x="District_Name", y="Production", color="District_Name", title=f"Total Production for {state_name}", template="plotly_dark")
 
 	return bar_graph
 
@@ -135,14 +136,14 @@ def particular_crop_prod(state_name, crop):
 		crop_df = state_df[state_df["Crop"]=="Rice"].groupby("District_Name", axis=0).mean().sort_values(by="Production", ascending=False).reset_index()
 
 		fig = px.bar(data_frame=crop_df, x="District_Name", y="Production", color='District_Name',
-			title=f"Rice Production/District of Maharashtra")
+			title=f"Rice Production/District of Maharashtra", template="plotly_dark")
 	else:
 		state_df = df[df["State_Name"]==state_name]
 		crop_df = state_df[state_df["Crop"]==crop].groupby("District_Name", axis=0).mean().sort_values(by="Production", ascending=False).reset_index()
 
 
 		fig = px.bar(data_frame=crop_df, x="District_Name", y="Production", color='District_Name', 
-			title=f"{str.capitalize(crop)} Production/District of {str.capitalize(state_name)}")
+			title=f"{str.capitalize(crop)} Production/District of {str.capitalize(state_name)}", template="plotly_dark")
 
 	return fig
 
@@ -158,7 +159,7 @@ def major_crops_in_particular_district(state_name, district_name):
 		district_df = state_df[state_df["District_Name"]=="AKOLA"]
 		df_new = district_df.groupby(by="Crop").mean().sort_values(by="Production", ascending=False).reset_index()
 
-		fig = px.bar(data_frame=df_new[:20], y="Crop", x="Production", color="Production")
+		fig = px.bar(data_frame=df_new[:20], y="Crop", x="Production", color="Production", template="plotly_dark")
 		fig.update_layout(title=f"The Top 20 most crop grown in the district Akola of Maharashtra.")
 	else:
 		state_name = str.capitalize(state_name)
@@ -167,8 +168,8 @@ def major_crops_in_particular_district(state_name, district_name):
 		district_df = state_df[state_df["District_Name"]==district_name]
 		df_new = district_df.groupby(by="Crop").mean().sort_values(by="Production", ascending=False).reset_index()
 
-		fig = px.bar(data_frame=df_new[:20], y="Crop", x="Production", color="Production")
-		fig.update_layout(title=f"The Top 20 most crop grown in the district {district_name} of {state_name}.")
+		fig = px.bar(data_frame=df_new[:20], y="Crop", x="Production", color="Production", template="plotly_dark")
+		fig.update_layout(title=f"The Top 20 most crop grown in the district {district_name} of {state_name}.", )
 	return fig
 
 @app.callback(
@@ -210,17 +211,18 @@ def map_india(crop):
 		locations='State_Name',
 		color="Production",
 		color_continuous_scale='viridis',
-		title=f"Production of {str.capitalize(crop)} throughout India."
+		title=f"Production of {str.capitalize(crop)} throughout India.",
+		template="plotly_dark"
 		)
 		fig.update_geos(fitbounds="locations", visible=False)
 
 	return fig
 
-# # path fot the static/assets file 
-# @app.server.route('/assets/<path:path>')
-# def static_file(path):
-#     static_folder = os.path.join(os.getcwd(), 'assets')
-#     return send_from_directory(static_folder, path)
+# path fot the static/assets file 
+@app.server.route('/assets/<path>')
+def static_file(path):
+    static_folder = os.path.join(os.getcwd(), 'assets')
+    return send_from_directory(static_folder, path)
 
 # if __name__ == "__main__":
 # 	app.run_server(debug=True)

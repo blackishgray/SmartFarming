@@ -55,8 +55,27 @@
 .fert-result-div-main
 {	
 	display:  table-footer-group;
-	background-color: lightpink;
 	height: 100%;
 	width: 500px;
 	text-align: center;
+}
+
+#crop-form-div{
+	height: 400px;
+	width: 400px;
+	text-align : left;
+	margin: 100px auto;
+
+}
+#crop-head
+{
+	text-align: center;
+}
+#submit-crop-div{
+	text-align: center;
+}
+#submit-crop
+{
+	margin: 8px auto;
+
 }

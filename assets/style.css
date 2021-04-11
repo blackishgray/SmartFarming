@@ -1,0 +1,12 @@
+body{
+	background-color: black
+}
+.main-div{
+	text-align: center;
+	background-color: black;
+	color: white
+}
+
+#labels-input-div{
+	float: left;
+}

@@ -1,11 +1,11 @@
 from flask import Flask, render_template, url_for, request
 import os 
 import dash
-import  url_override
 import fertilizer_pred as fp 
 from markupsafe import Markup
+import crop_rec as cr
+
 from dash_demo import *
-# from fertilizer import pred_fert_reco 
 
 server = Flask(__name__, static_url_path='/static')
  
@@ -15,12 +15,22 @@ def index():
 
 @server.route("/dashboard")
 def dashboard():
-    graph = district_wise_prod()
-	return render_template("dashboard.html", graph=graph)
+    return render_template("dashboard.html")
 
 @server.route("/crop")
 def crop_pred():
     return render_template('crop_pred.html')
+
+@server.route("/crop_process", methods=["POST", "GET"])
+def crop_process():
+
+    if request.method == "POST":
+        state_name = request.form["state_name"]
+        district_name = request.form["district_name"]
+
+        data = cr.major_crops(state_name,  district_name)
+    return render_template('crop_results.html', data=data)
+
 
 @server.route("/fertilizer")
 def fertilizer():

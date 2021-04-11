@@ -6,7 +6,10 @@
 </head>
 <body>
 	{% block body %}
-	{{graph}}
+	<!-- <script>
+		var graphs = {{ graph | safe }};
+		Plotly.plot('bargraph' , graphs , {});
+	</script> -->
 	{% endblock %}
 </body>
 </html>
