@@ -1,9 +1,9 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 import os 
 import dash
 import fertilizer_pred as fp 
 from markupsafe import Markup
-import crop_rec as cr
+import crop_pred as cr
 
 from dash_demo import *
 
@@ -25,12 +25,12 @@ def crop_pred():
 def crop_process():
 
     if request.method == "POST":
-        state_name = request.form["state_name"]
-        district_name = request.form["district_name"]
+        state_name = str(request.form["state-name"])
+        district_name = str(request.form["district-name"])
 
         data = cr.major_crops(state_name,  district_name)
-    return render_template('crop_results.html', data=data)
 
+    return render_template('crop_pred.html', data=data)
 
 @server.route("/fertilizer")
 def fertilizer():

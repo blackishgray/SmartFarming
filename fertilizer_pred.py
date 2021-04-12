@@ -3,7 +3,7 @@ import pandas as pd
 import fertilizer_reccomendation as fr 
 
 df = pd.read_csv("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//fertilizer.csv")
-df.drop("Unnamed: 0", axis=1, inplace=True)
+# df.drop("Unnamed: 0", axis=1, inplace=True)
 
 list_for_crops = []
 list3 = df["Crop"].tolist()
