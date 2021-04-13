@@ -2,19 +2,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-		{% block title %}<title>Smart Farming</title>{% endblock %}
+	{% block title %}<title>Smart Farming</title>{% endblock %}
 </head>
 <body>
 	{% block body %}
 	<div class="main-div">
-		<p>Smart Farming is an internet based applcation for solution on farming problems</p>
-		<p>Interactive Vizualization.</p>
-		<p>You can find solution regarding Fertilizers</p>
-		<p>Based on your crop choice which fertilizer to use.</p>
-		<p>Crop prediction based on your input value</p>
+		<div id="text-on-img-div">
+			<p><h3><b>Smart Farming is an internet based applcation for solution on farming problems</b></h3></p>
+			<p><h3><b>Interactive Vizualization.</b></h3></p>
+			<p><h3><b>You can find solution regarding Fertilizers</b></h3></p>
+			<p><h3><b>Based on your crop choice which fertilizer to use.</b></h3></p>
+			<p><h3><b>Crop prediction based on your input values.</b></h3></p>
+		</div>
 	</div>
-	 
+
+	<div class="container-fluid">
+		<div class="about-us-div">
+			<div class="row">
+				<div class="col-lg-6">
+					<p><h3>About Us...</h3></p>
+					<div>
+						Smart Farming is an ML based application that
+						can answer a lot of questions about farming and prodction
+						that has been done in the years before 2020. We answer questions based on fertilizer selection and preparation.
+						Crop prediction is done on the basis on where you are and 
+						what region your in.
+					</div>
+				</div>
+				<div class="col-lg-6">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
 	{% endblock %}
+
+	
 
 </body>
 </html>
