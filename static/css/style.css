@@ -79,3 +79,25 @@
 	margin: 8px auto;
 
 }
+#crop_list_div{
+	float: left;
+}
+
+#table_for_crop_list{
+	margin: 8px auto;
+	border: 1px solid;
+}
+
+#crop-prediction{
+	/*background-color: hotpink;*/
+	height: 400px;
+	width: 600px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+	text-align: center;
+}

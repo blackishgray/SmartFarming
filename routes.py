@@ -3,7 +3,7 @@ import os
 import dash
 import fertilizer_pred as fp 
 from markupsafe import Markup
-import crop_pred as cr
+from crop_pred import crop_predictions as cp
 
 from dash_demo import *
 
@@ -27,10 +27,24 @@ def crop_process():
     if request.method == "POST":
         state_name = str(request.form["state-name"])
         district_name = str(request.form["district-name"])
+        N = int(request.form["n-value"])
+        P = int(request.form['p-value']) 
+        K = int(request.form['k-value']) 
+        pH = float(request.form['pH-value'])
 
-        data = cr.major_crops(state_name,  district_name)
+        data_for_crops_list = cp().major_crops(state_name,  district_name)
+        crops_df = cp().crops_list(data_for_crops_list)
 
-    return render_template('crop_pred.html', data=data)
+        values = [N, P, K, pH]
+
+        prediction = cp().predict_crop(values, crops_df)
+
+        dict_to_send = {
+        "data_for_crops_list" : data_for_crops_list,
+        "prediction":prediction
+        }
+
+    return render_template('crop_results.html', data=dict_to_send)
 
 @server.route("/fertilizer")
 def fertilizer():

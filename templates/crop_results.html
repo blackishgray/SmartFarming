@@ -6,11 +6,43 @@
 </head>
 <body>
 	{% block body %}
-	{{data}}
-	<!-- {% for i in data %}
+	<div id="crop_list_div">
+		<table class="table table-striped" id="table_for_crop_list">
+			<thead>
+				<tr>
+					<th scope="col">Crop</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for crop in data["data_for_crops_list"] %}
+				<tr>
+					<td>{{crop}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 
-	{% endfor %}
+	<div id="crop-prediction">
+		<h3>The Crop That You Can grow on your soil is: </h3>
+		{% if data["prediction"]|length == 0 %}
 
- -->	{% endblock %}
+			<P><h4>The values entered are not suitable for any crop in this region.</h4></P>
+			<<P><h4>Please Procced to this page for more information on fertilizers to grow a particular crop.</h4></P>
+
+		{% else %}
+
+			{% if data["prediction"]|length > 1 %}
+				{% for i in data["prediction"] %}
+					<p><h4>{{ i }}</h4></p>
+				{% endfor %}
+			{% else %}
+				<p><h4>{{ data["prediction"][0] }}</h4></p>
+			{% endif %}
+
+		{% endif %}
+
+	</div>
+	{% endblock %}
 </body>
 </html>

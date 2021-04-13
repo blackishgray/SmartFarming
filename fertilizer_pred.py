@@ -32,7 +32,7 @@ def compute_values(args):
     if ip[1] > nr : 
         nrec = fr.fertilizer_dic["NHigh"]
     elif ip[1] == nr:
-        nrec = f"\tNitrogen values of your soil is prefect for {ip[0]}"
+        nrec = f"\t<b>Nitrogen values of your soil is prefect for {ip[0]}</b>"
     else:
         nrec = fr.fertilizer_dic["NLow"]
    
@@ -40,7 +40,7 @@ def compute_values(args):
     if ip[2] > pr : 
         prec = fr.fertilizer_dic["PHigh"]
     elif ip[2] == pr:
-        prec = f"\tPhosphorous values of your soil is prefect for {ip[0]}"
+        prec = f"\t<b>Phosphorous values of your soil is prefect for {ip[0]}</b>"
     else:
         prec = fr.fertilizer_dic["PLow"]
 
@@ -48,7 +48,7 @@ def compute_values(args):
     if ip[3] > kr : 
         krec = fr.fertilizer_dic["KHigh"]
     elif ip[3] == kr:
-        krec = f"\tPotassium values of your soil is prefect for {ip[0]}"
+        krec = f"\t<b>Potassium values of your soil is prefect for {ip[0]}</b>"
     else:  
         krec = fr.fertilizer_dic["KLow"]
 
@@ -56,7 +56,7 @@ def compute_values(args):
     if ip[4] > pHr : 
         pHrec = fr.fertilizer_dic["pHHigh"]
     elif ip[4] == pHr:
-        pHrec = f"\tpH values of your soil is prefect for {ip[0]}"
+        pHrec = f"\t<b>pH values of your soil is prefect for {ip[0]}</b>"
     else: 
         pHrec = fr.fertilizer_dic["pHLow"]
     reccommendations = [nrec, prec, krec, pHrec]

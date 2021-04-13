@@ -27,7 +27,7 @@ app.scripts.config.serve_locally = True
 #Designing the app layout 
 app.layout = html.Div(className="main-div",children=[
 
-	html.Link(rel="stylesheet", href="/assets/style.css"),
+	# html.Link(rel="stylesheet", href="/assets/style.css"),
 
 	html.H1("Vizualization for Smart Farming.", className="h1"),
 
