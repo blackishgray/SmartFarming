@@ -1,7 +1,17 @@
 
+.body{
+	/*background-color: lightcoral;*/
+	background-color: #fff5f7f2;
+}
+
+.navbar{
+	height: 80px;
+	/*text-*/
+}
+ 
 .main-div{
 	background-color: lightpink;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/1.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/7.jpg");
 	max-width: 100%;
 	width: 1800px;
 	height: 760px;
@@ -15,9 +25,11 @@
 
 #layout-img-div{
 	text-align: center;
-	background-color: #eddef2f2;
+	background-color: #fff5f7f2;
+	/*background-color: lightcoral;*/
 
 }
+
 /* 
 #index-img{
 	max-width: 100%;
@@ -39,13 +51,13 @@
 	font-family: arial;
 }
 
-/*{
+#fertilizer-form-div{
 	height: 400px;
 	width: 400px;
 	text-align : left;
 	margin: 100px auto;
 
-}*/
+}
 
 #fertilizer-head
 {
@@ -84,7 +96,9 @@
 	width: 500px;
 	text-align: center;
 }
-
+table th {
+	border: 1px solid;
+}
 #crop-form-div{
 	height: 400px;
 	width: 400px;
@@ -105,7 +119,7 @@
 
 }
 #crop_list_div{
-	float: left;
+	/*float: left;*/
 }
 
 #table_for_crop_list{
@@ -117,7 +131,7 @@
 	/*background-color: hotpink;*/
 	height: 400px;
 	width: 600px;
-	position: absolute;
+	/*position: absolute;*/
 	top:0;
 	bottom: 0;
 	left: 0;
@@ -127,8 +141,61 @@
 	text-align: center;
 }
 
+#about-us-img{
+	background-image: url('../images/11.jpg');
+	/*max-width: 100%;*/
+	/*width: 1800px;*/
+	/*height: 760px;*/
+	/*max-height: 100%;*/
+	height: 600px;
+	/*width: 100%;*/
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
 #about-us-div{
+	text-align: center;
+	font-family: "arial";
+	width: 400px;
+}
+
+.card-img-top{
+	height: 400px;
+}
+
+.card-img-top-1{
+	height: 400px;
+}
+
+#card-div{
+	margin: 10px auto;
+	height: 500px;
+}
+.card{
+	background-color: black;
+}
+.card-body{
 	text-align: center;
 }
 
+#footer{
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	width: 100%;
+	height: 180px;
+	/*text-align: center;*/
+	margin-bottom: 0px;
+	position: absolute;
 
+}
+
+/*#footer-text{*/
+/*}*/
+
+.crop-div{
+	background-image: url('..images/4.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
