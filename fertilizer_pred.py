@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import fertilizer_reccomendation as fr 
 
-df = pd.read_csv("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//fertilizer.csv")
+df = pd.read_csv("Datasets//fertilizer.csv")
 # df.drop("Unnamed: 0", axis=1, inplace=True)
 
 list_for_crops = []

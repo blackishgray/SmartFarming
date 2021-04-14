@@ -14,7 +14,7 @@ import plotly.express as px
 
 
 
-df = pd.read_csv("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//apy_clean.csv")
+df = pd.read_csv("Datasets//apy_clean.csv")
 # df.drop('Unnamed: 0', axis=1, inplace=True)
 
 #initalizing the dash 
@@ -178,7 +178,7 @@ def major_crops_in_particular_district(state_name, district_name):
 
 def map_india(crop):
 
-	f = open("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//states_india.geojson")
+	f = open("Datasets//states_india.geojson")
 	k = json.load(f)
 	a = k["features"]
 	li2 = []

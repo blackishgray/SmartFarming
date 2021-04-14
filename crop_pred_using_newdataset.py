@@ -25,7 +25,7 @@ from sklearn.tree import export_graphviz
 warnings.simplefilter(action="ignore")
 
 
-df = pd.read_csv("C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//crop_new_dataset.csv")
+df = pd.read_csv("Datasets//crop_new_dataset.csv")
 df.head()
 
 def drop_cols(df, col):

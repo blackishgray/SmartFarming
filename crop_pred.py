@@ -15,7 +15,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, classification_rep
 
 warnings.simplefilter(action="ignore")
 
-df = pd.read_csv('C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//apy_clean.csv')
+df = pd.read_csv('Datasets//apy_clean.csv')
 df.head()
 
 df.shape
@@ -51,7 +51,7 @@ class crop_predictions():
 
     def crops_list(self, list_of_crops):
 
-        crop_df = pd.read_csv('C://Users//Ratnadeep Gawade//Desktop//python//Machine Learning//Data Set//Projects//Crop Predcition//Crop_Pred.csv')
+        crop_df = pd.read_csv('Datasets//Crop_Pred.csv')
         crop_df.drop('Unnamed: 0', axis=1, inplace=True)
 
 

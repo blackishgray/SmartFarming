@@ -25,7 +25,6 @@
 <br>
 <br>
 	<div id="crop-prediction">
-		<h3>The Crop That You Can grow on your soil is: </h3>
 		{% if data["prediction"]|length == 0 %}
 
 			<P><h4>The values entered are not suitable for any crop in this region.</h4></P>
@@ -34,10 +33,12 @@
 		{% else %}
 
 			{% if data["prediction"]|length > 1 %}
+				<h3>The Crops that you can grow on your soil are: </h3>
 				{% for i in data["prediction"] %}
 					<p><h4>{{ i }}</h4></p>
 				{% endfor %}
 			{% else %}
+				<h3>The Crops that you can grow on your soil is: </h3>
 				<p><h4>{{ data["prediction"][0] }}</h4></p>
 			{% endif %}
 

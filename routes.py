@@ -13,7 +13,7 @@ server = Flask(__name__, static_url_path='/static')
 def index():
 	return render_template("index.html")
 
-@server.route("/dashboard")
+@server.route("/dashboard") 
 def dashboard():
     return render_template("dashboard.html")
 
